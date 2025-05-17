@@ -11,11 +11,13 @@ extracted_text = ""
 
 @app.route("/", methods=["POST", "GET"])
 def home():
-
     if request.method == "POST":
-        document = request.form.get("file")
+        file = request.files.get("file")
 
-        with open(document, "rb") as file:
+        if not file or file.filename == "":
+            return "No file selected"
+
+        if file.filename.lower().endswith(".pdf"):
             reader = PyPDF2.PdfReader(file)
             for page in reader.pages:
                 global extracted_text
