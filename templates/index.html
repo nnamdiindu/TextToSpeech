@@ -10,14 +10,18 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col bg-light">PDF to Speech Converter</div>
+            <div class="col bg-light py-4">
+                <h1>PDF to Speech Converter</h1>
+            </div>
         </div>
         <div class="row">
             <!-- PDF Preview Div -->
             <div class="col-md-6 p-3 border rounded-2">
-                <div class="bg-light rounded-1">PDF Preview</div>
+                <div class="bg-light rounded-1">
+                    <h2 class="text-center">Document Preview</h2>
+                </div>
                 <div class="bg-light mt-2 text-center border rounded-2">
-                    <span class="text-danger">Upload PDF file ONLY!</span>
+                    <span class="text-danger">Supported files are PDF and Docx ONLY!</span>
                     <form action="{{ url_for('home') }}" method="post" class="form-control" enctype="multipart/form-data">
                         <input type="file" name="file" id="file" class="form-control">
                         <button type="submit" class="btn btn-lg btn-primary">Upload</button>
@@ -32,7 +36,9 @@
 
             <!-- Text Conversion Div -->
             <div class="col-md-6 p-3 border rounded-2">
-                <div class="text-center bg-light">Text Conversion</div>
+                <div class="text-center bg-light">
+                    <h2>Text Conversion</h2>
+                </div>
                 <div class="extracted-text">
                     <p class="mt-2">Extracted Text</p>
                     <div class="bg-light border rounded-2 p-2">
@@ -40,9 +46,9 @@
                     </div>
                 </div>
                 <div class="bg-light mt-2 mb-2 text-center">Audio Speech</div>
-                <form id="uploadForm" action="{{ url_for('generate_audio') }}" method="post">
+                <!-- <form id="uploadForm" action="{{ url_for('generate_audio') }}" method="post">
                     <button type="submit" class="btn btn-sm btn-success">Click here to Convert to Audio</button>
-                </form>
+                </form> -->
                 <audio id="audioPlayer" controls></audio>
             </div>
         </div>
