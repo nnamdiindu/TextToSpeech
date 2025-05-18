@@ -1,7 +1,7 @@
 import os
 from docx import Document
 from dotenv import load_dotenv
-from flask import Flask, render_template, request, Response, url_for, redirect
+from flask import Flask, render_template, request, Response
 import PyPDF2
 
 app = Flask(__name__)
@@ -27,7 +27,7 @@ def home():
             doc = Document(file)
             extracted_text = "\n".join([para.text for para in doc.paragraphs])
         else:
-            return "<h1>File not supported</h1>"
+            return "<h1>File not supported.</h1>"
     return render_template("index.html", text=extracted_text)
 
 @app.route("/generate_audio", methods=["POST", "GET"])
